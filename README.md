@@ -1,4 +1,4 @@
-# spring-assignment
+# COW-Platform-Spring-Assignment
 
 학습자 2명이 하나의 레포에서 **같은 과제를 서로 간섭 없이** 각자 구현하는 스프링 학습용 레포입니다.
 
@@ -7,7 +7,7 @@
 ## 디렉토리 구조
 
 ```
-spring-assignment/
+COW-Platform-Spring-Assignment/
 ├── README.md
 ├── .gitignore
 ├── docs/
