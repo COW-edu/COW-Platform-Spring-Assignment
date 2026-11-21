@@ -8,12 +8,25 @@
 
 | 브랜치 | 용도 |
 |---|---|
-| `main` | 초기 세팅과 문서만 유지. 직접 커밋과 PR 병합 모두 금지 |
-| `student-a/dev`, `student-b/dev` | 각자의 통합 브랜치. `main`에서 최초 1회 분기 |
-| `student-a/작업명` (예: `student-a/project-crud`) | 기능별 작업 브랜치. 본인의 `dev`에서 분기 |
+| `main` | 기본 브랜치. 초기 세팅과 `docs/`만 유지 |
+| `student-a/작업명` (예: `student-a/post-crud`) | 학습자 A의 작업 브랜치. `main`에서 분기 |
+| `student-b/작업명` (예: `student-b/post-crud`) | 학습자 B의 작업 브랜치. `main`에서 분기 |
 
 - 본인 디렉토리(`student-a/` 또는 `student-b/`) **안의 파일만** 수정한다.
-- 구현 코드는 `main`에 들어가지 않는다. 결과물은 각자의 `student-x/dev`에 쌓인다.
+- 상대방의 디렉토리는 참고용으로 볼 수 있지만 수정하지 않는다.
+- 별도의 `dev` 브랜치 없이, `main`에서 분기한 본인 작업 브랜치에서 구현하고 PR로 제출한다.
+
+```bash
+git checkout main
+git pull origin main
+git checkout -b student-a/작업명
+# 작업 후
+git add student-a
+git commit -m "feat: 게시글 CRUD 추가"
+git push origin student-a/작업명
+```
+
+학습자 B는 위 명령의 `student-a`를 `student-b`로 바꿔서 사용한다.
 
 ### 커밋
 
@@ -23,9 +36,9 @@
 
 ### PR
 
-- 작업 브랜치 → **본인의 `student-x/dev`** 로 올린다. `main`으로 올리지 않는다.
-- 제목은 커밋과 같은 형식이다. 병합은 **Squash and merge**로 하므로 PR 제목이 최종 커밋 메시지가 된다.
-- 상대 학습자(또는 담당자)의 리뷰를 받은 뒤 병합한다. PR 하나에는 기능 하나만 담는다.
+- 본인 작업 브랜치에서 `main`을 대상으로 리뷰용 PR을 올린다. `main`에는 초기 세팅과 `docs/`만 유지하므로 구현 PR은 병합하지 않는다.
+- 제목은 커밋과 같은 형식으로 쓰고, PR 하나에는 기능 하나만 담는다.
+- 서로의 PR을 리뷰해보는 것을 추천한다.
 - 본문은 아래 형식을 쓴다.
 
 ```markdown
